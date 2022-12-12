@@ -39,6 +39,8 @@ namespace ASCOM.HomeMade
                 textBoxMaxWind.Text = textBoxMaxWind.Text.Replace(",", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
                 textBoxMaxGusts.Text = textBoxMaxGusts.Text.Replace(".", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
                 textBoxMaxGusts.Text = textBoxMaxGusts.Text.Replace(",", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
+                textBoxMaxHumidity.Text = textBoxMaxHumidity.Text.Replace(",", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
+                textBoxMaxHumidity.Text = textBoxMaxHumidity.Text.Replace(".", CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator);
 
                 SafetyMonitor.comServer = (string)internetServer.Text;
                 SafetyMonitor.soloServer = (string)soloServer.Text;
@@ -55,6 +57,7 @@ namespace ASCOM.HomeMade
                 SafetyMonitor.maxWind = Convert.ToDouble(textBoxMaxWind.Text);
                 SafetyMonitor.maxGust = Convert.ToDouble(textBoxMaxGusts.Text);
                 SafetyMonitor.rainSensor = Convert.ToInt32(textBoxRainSensor.Text);
+                SafetyMonitor.maxHumid = Convert.ToDouble(textBoxMaxHumidity.Text);
             }
             catch (Exception ex)
             {
@@ -95,7 +98,8 @@ namespace ASCOM.HomeMade
                 textBoxTempOffset.Text = SafetyMonitor.tempOffset.ToString();
                 checkBoxLimitTempHumid.Checked = SafetyMonitor.limitTempHumid;
                 checkBoxLuminosity.Checked = SafetyMonitor.limitLuminosity;
-                
+                textBoxMaxHumidity.Text = SafetyMonitor.maxHumid.ToString();
+
                 textBoxUPSURL.Text = SafetyMonitor.UPSURL;
                 textBoxUPSSearch.Text = SafetyMonitor.UPSSearch;
                 checkBoxInternet.Checked = SafetyMonitor.Internet;

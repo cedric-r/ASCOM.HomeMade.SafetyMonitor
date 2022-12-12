@@ -59,6 +59,8 @@ namespace ASCOM.HomeMade
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxRainSensor = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.textBoxMaxHumidity = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picASCOM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +68,7 @@ namespace ASCOM.HomeMade
             // 
             this.cmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.cmdOK.Location = new System.Drawing.Point(285, 430);
+            this.cmdOK.Location = new System.Drawing.Point(254, 476);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(59, 24);
             this.cmdOK.TabIndex = 9;
@@ -78,7 +80,7 @@ namespace ASCOM.HomeMade
             // 
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancel.Location = new System.Drawing.Point(285, 461);
+            this.cmdCancel.Location = new System.Drawing.Point(254, 507);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(59, 25);
             this.cmdCancel.TabIndex = 10;
@@ -99,7 +101,7 @@ namespace ASCOM.HomeMade
             this.picASCOM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picASCOM.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picASCOM.Image = global::ASCOM.HomeMade.Properties.Resources.ASCOM;
-            this.picASCOM.Location = new System.Drawing.Point(296, 9);
+            this.picASCOM.Location = new System.Drawing.Point(265, 9);
             this.picASCOM.Name = "picASCOM";
             this.picASCOM.Size = new System.Drawing.Size(48, 56);
             this.picASCOM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -121,7 +123,7 @@ namespace ASCOM.HomeMade
             // chkTrace
             // 
             this.chkTrace.AutoSize = true;
-            this.chkTrace.Location = new System.Drawing.Point(109, 456);
+            this.chkTrace.Location = new System.Drawing.Point(109, 483);
             this.chkTrace.Name = "chkTrace";
             this.chkTrace.Size = new System.Drawing.Size(69, 17);
             this.chkTrace.TabIndex = 9;
@@ -202,7 +204,7 @@ namespace ASCOM.HomeMade
             // 
             // textBoxTempOffset
             // 
-            this.textBoxTempOffset.Location = new System.Drawing.Point(109, 267);
+            this.textBoxTempOffset.Location = new System.Drawing.Point(109, 294);
             this.textBoxTempOffset.Name = "textBoxTempOffset";
             this.textBoxTempOffset.Size = new System.Drawing.Size(43, 20);
             this.textBoxTempOffset.TabIndex = 6;
@@ -210,7 +212,7 @@ namespace ASCOM.HomeMade
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 270);
+            this.label7.Location = new System.Drawing.Point(11, 297);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
             this.label7.TabIndex = 17;
@@ -219,7 +221,7 @@ namespace ASCOM.HomeMade
             // checkBoxLimitTempHumid
             // 
             this.checkBoxLimitTempHumid.AutoSize = true;
-            this.checkBoxLimitTempHumid.Location = new System.Drawing.Point(109, 244);
+            this.checkBoxLimitTempHumid.Location = new System.Drawing.Point(109, 271);
             this.checkBoxLimitTempHumid.Name = "checkBoxLimitTempHumid";
             this.checkBoxLimitTempHumid.Size = new System.Drawing.Size(106, 17);
             this.checkBoxLimitTempHumid.TabIndex = 18;
@@ -229,7 +231,7 @@ namespace ASCOM.HomeMade
             // checkBoxLuminosity
             // 
             this.checkBoxLuminosity.AutoSize = true;
-            this.checkBoxLuminosity.Location = new System.Drawing.Point(109, 398);
+            this.checkBoxLuminosity.Location = new System.Drawing.Point(109, 425);
             this.checkBoxLuminosity.Name = "checkBoxLuminosity";
             this.checkBoxLuminosity.Size = new System.Drawing.Size(95, 17);
             this.checkBoxLuminosity.TabIndex = 19;
@@ -238,7 +240,7 @@ namespace ASCOM.HomeMade
             // 
             // textBoxMaxWind
             // 
-            this.textBoxMaxWind.Location = new System.Drawing.Point(109, 294);
+            this.textBoxMaxWind.Location = new System.Drawing.Point(109, 321);
             this.textBoxMaxWind.Name = "textBoxMaxWind";
             this.textBoxMaxWind.Size = new System.Drawing.Size(43, 20);
             this.textBoxMaxWind.TabIndex = 20;
@@ -246,7 +248,7 @@ namespace ASCOM.HomeMade
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 297);
+            this.label8.Location = new System.Drawing.Point(13, 324);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 21;
@@ -254,7 +256,7 @@ namespace ASCOM.HomeMade
             // 
             // textBoxMaxGusts
             // 
-            this.textBoxMaxGusts.Location = new System.Drawing.Point(109, 320);
+            this.textBoxMaxGusts.Location = new System.Drawing.Point(109, 347);
             this.textBoxMaxGusts.Name = "textBoxMaxGusts";
             this.textBoxMaxGusts.Size = new System.Drawing.Size(43, 20);
             this.textBoxMaxGusts.TabIndex = 22;
@@ -262,7 +264,7 @@ namespace ASCOM.HomeMade
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 323);
+            this.label9.Location = new System.Drawing.Point(13, 350);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 13);
             this.label9.TabIndex = 23;
@@ -271,7 +273,7 @@ namespace ASCOM.HomeMade
             // checkBoxUPS
             // 
             this.checkBoxUPS.AutoSize = true;
-            this.checkBoxUPS.Location = new System.Drawing.Point(109, 375);
+            this.checkBoxUPS.Location = new System.Drawing.Point(109, 402);
             this.checkBoxUPS.Name = "checkBoxUPS";
             this.checkBoxUPS.Size = new System.Drawing.Size(48, 17);
             this.checkBoxUPS.TabIndex = 24;
@@ -281,7 +283,7 @@ namespace ASCOM.HomeMade
             // checkBoxInternet
             // 
             this.checkBoxInternet.AutoSize = true;
-            this.checkBoxInternet.Location = new System.Drawing.Point(109, 421);
+            this.checkBoxInternet.Location = new System.Drawing.Point(109, 448);
             this.checkBoxInternet.Name = "checkBoxInternet";
             this.checkBoxInternet.Size = new System.Drawing.Size(62, 17);
             this.checkBoxInternet.TabIndex = 25;
@@ -322,7 +324,7 @@ namespace ASCOM.HomeMade
             // 
             // textBoxRainSensor
             // 
-            this.textBoxRainSensor.Location = new System.Drawing.Point(109, 349);
+            this.textBoxRainSensor.Location = new System.Drawing.Point(109, 376);
             this.textBoxRainSensor.Name = "textBoxRainSensor";
             this.textBoxRainSensor.Size = new System.Drawing.Size(43, 20);
             this.textBoxRainSensor.TabIndex = 30;
@@ -330,17 +332,35 @@ namespace ASCOM.HomeMade
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 352);
+            this.label12.Location = new System.Drawing.Point(13, 379);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 31;
             this.label12.Text = "Rain sensor min";
             // 
+            // textBoxMaxHumidity
+            // 
+            this.textBoxMaxHumidity.Location = new System.Drawing.Point(109, 246);
+            this.textBoxMaxHumidity.Name = "textBoxMaxHumidity";
+            this.textBoxMaxHumidity.Size = new System.Drawing.Size(43, 20);
+            this.textBoxMaxHumidity.TabIndex = 32;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(13, 249);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(68, 13);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Max humidity";
+            // 
             // SetupDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 494);
+            this.ClientSize = new System.Drawing.Size(323, 540);
+            this.Controls.Add(this.textBoxMaxHumidity);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.textBoxRainSensor);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.textBoxUPSSearch);
@@ -419,5 +439,7 @@ namespace ASCOM.HomeMade
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxRainSensor;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxMaxHumidity;
+        private System.Windows.Forms.Label label13;
     }
 }

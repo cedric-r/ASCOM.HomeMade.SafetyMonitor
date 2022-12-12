@@ -109,6 +109,8 @@ namespace ASCOM.HomeMade
         internal static string UPSSearchDefault = "";
         internal static string rainSensorName = "RainSensor"; // Constants used for Profile persistence
         internal static string rainSensorDefault = "800";
+        internal static string maxHumidName = "MaxHumid"; // Constants used for Profile persistence
+        internal static string maxHumidDefault = "100";
 
         internal static string comServer; // Variables to hold the currrent device configuration
         internal static string soloServer; // Variables to hold the currrent device configuration
@@ -126,6 +128,7 @@ namespace ASCOM.HomeMade
         internal static string UPSURL = "";
         internal static string UPSSearch = "";
         internal static int rainSensor = 800;
+        internal static double maxHumid = 100;
 
         internal static bool trace { get { return _trace; } set
         {
@@ -170,6 +173,7 @@ namespace ASCOM.HomeMade
             _safetymonitorcontroller.maxWind = maxWind;
             _safetymonitorcontroller.maxGust = maxGust;
             _safetymonitorcontroller.rainSensor = rainSensor;
+            _safetymonitorcontroller.maxHumid = maxHumid;
 
             _observingconditionscontroller = new DeviceObservingConditions();
             _observingconditionscontroller.Server = soloServer;
@@ -448,6 +452,7 @@ namespace ASCOM.HomeMade
                     UPSURL = driverProfile.GetValue(driverID, UPSURLName, string.Empty, UPSURLDefault);
                     UPSSearch = driverProfile.GetValue(driverID, UPSSearchName, string.Empty, UPSSearchDefault);
                     rainSensor = Convert.ToInt32(driverProfile.GetValue(driverID, rainSensorName, string.Empty, rainSensorDefault));
+                    maxHumid = Convert.ToDouble(driverProfile.GetValue(driverID, maxHumidName, string.Empty, maxHumidDefault));
 
                     _safetymonitorcontroller.internetServer = comServer;
                     _safetymonitorcontroller.soloServer = soloServer;
@@ -465,6 +470,7 @@ namespace ASCOM.HomeMade
                     _safetymonitorcontroller.maxWind = maxWind;
                     _safetymonitorcontroller.maxGust = maxGust;
                     _safetymonitorcontroller.rainSensor = rainSensor;
+                    _safetymonitorcontroller.maxHumid = maxHumid;
                     _observingconditionscontroller.Server = soloServer;
                     _observingconditionscontroller.trace = trace;
                 }
@@ -501,6 +507,7 @@ namespace ASCOM.HomeMade
                     driverProfile.WriteValue(driverID, maxWindName, maxWind.ToString());
                     driverProfile.WriteValue(driverID, maxGustName, maxGust.ToString());
                     driverProfile.WriteValue(driverID, rainSensorName, rainSensor.ToString());
+                    driverProfile.WriteValue(driverID, maxHumidName, maxHumid.ToString());
                 }
             }
             catch (Exception ex)
