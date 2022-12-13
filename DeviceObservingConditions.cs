@@ -17,8 +17,6 @@ using Newtonsoft.Json;
 class DeviceObservingConditions
 {
     //private static TraceLogger tl = new TraceLogger();
-    private const int UPDATEFREQUENCY = 120; // In seconds
-    private static Mutex semaphore = new Mutex();
     private bool _trace = false;
     public bool trace
     {
@@ -54,7 +52,7 @@ class DeviceObservingConditions
         get
         {
             LogMessage("AveragePeriod: get");
-            return 1 / 60;
+            return RemoteData.UPDATEFREQUENCY*RemoteData.NBAVERAGE/60/60;
         }
         set
         {
@@ -284,7 +282,8 @@ class DeviceObservingConditions
         get
         {
             LogMessage("WindDirection: get");
-            throw new PropertyNotImplementedException("WindDirection", false);
+            List<DataItem> data = GetData();
+            return data.Last().winddir;
         }
     }
 
@@ -348,7 +347,16 @@ class DeviceObservingConditions
 
     private List<DataItem> GetData()
     {
-        return RemoteData.GetData(Server);
+        List<DataItem> data = RemoteData.GetData(Server);
+
+        DataItem dataItem = null;
+        foreach (DataItem item in data)
+        {
+            if (dataItem == null) dataItem = item;
+            else dataItem = dataItem + item;
+        }
+        dataItem = dataItem / data.Count;
+        return new List<DataItem>() { dataItem };
     }
     #endregion
 

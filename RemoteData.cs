@@ -20,19 +20,66 @@ namespace ASCOM.HomeMade
         public double dew;
         public double pressure;
         public double cloud;
-        public int rain;
+        public double rain;
         public double board;
         public double wind;
         public double gust;
+        public double winddir;
         public double light;
         public bool safe;
         public bool internet;
         public bool UPS;
+
+        public static DataItem operator+(DataItem b, DataItem c)
+        {
+            DataItem item = new DataItem();
+            item.time = c.time;
+            item.temperature = b.temperature + c.temperature;
+            item.humidity = b.humidity + c.humidity;
+            item.dew = b.dew + c.dew;
+            item.pressure = b.pressure + c.pressure;
+            item.cloud = b.cloud + c.cloud;
+            item.rain = b.rain + c.rain;
+            item.board = b.board + c.board;
+            item.wind = b.wind + c.wind;
+            item.gust = b.gust + c.gust;
+            item.winddir = b.winddir + c.winddir;
+            item.light = b.light + c.light;
+            item.safe = b.safe && c.safe;
+            item.internet = b.internet && c.internet;
+            item.UPS = b.UPS && c.UPS;
+
+            return item;
+        }
+
+        public static DataItem operator /(DataItem b, int c)
+        {
+            DataItem item = new DataItem();
+            item.time = b.time;
+            item.temperature = b.temperature / c;
+            item.humidity = b.humidity / c;
+            item.dew = b.dew / c;
+            item.pressure = b.pressure / c;
+            item.cloud = b.cloud / c;
+            item.rain = b.rain / c;
+            item.board = b.board / c;
+            item.wind = b.wind / c;
+            item.gust = b.gust / c;
+            item.winddir = b.winddir / c;
+            item.light = b.light / c;
+            item.safe = b.safe;
+            item.internet = b.internet;
+            item.UPS = b.UPS;
+
+            return item;
+        }
+
     }
 
-    public static class RemoteData
+        public static class RemoteData
     {
-        private static int UPDATEFREQUENCY = 60; // In seconds
+        public static int UPDATEFREQUENCY = 60; // In seconds
+        public static int NBAVERAGE = 1; // Multiples of UPDATEFREQUENCY
         private static List<DataItem> _Data = new List<DataItem>();
         private static DateTime _LastUpdate = DateTime.MinValue;
         private static int RainSensor = 0;
@@ -79,7 +126,7 @@ namespace ASCOM.HomeMade
                     }
                     catch (Exception e)
                     {
-                        Logger.LogMessage("Couldn't load SOLO data");
+                        Logger.LogMessage("Couldn't load SOLO data: "+e.Message+"\n"+e.StackTrace);
                         soloError = true;
                     }
                     if (soloError)
@@ -163,8 +210,13 @@ namespace ASCOM.HomeMade
                     Logger.LogMessage("UPS checked");
 
                     _LastUpdate = DateTime.Now;
-                    _Data.Clear();
                     _Data.Add(di);
+                    if (_Data.Count > NBAVERAGE)
+                    {
+                        List<DataItem> _Data2 = new List<DataItem>();
+                        for (int i = 0; i < NBAVERAGE; i++) _Data2.Add(_Data.ElementAt(_Data.Count - i -1));
+                        _Data = _Data2;
+                    }
                     Logger.LogMessage("DataItem=" + JsonConvert.SerializeObject(di));
                 }
                 else
@@ -197,7 +249,7 @@ namespace ASCOM.HomeMade
                 if (line.Contains("temp=")) di.temperature = ConvertToDouble(line.Replace("temp=", ""));
                 if (line.Contains("rain="))
                 {
-                    di.rain = Convert.ToInt32(line.Replace("rain=", ""));
+                    di.rain = ConvertToDouble(line.Replace("rain=", ""));
                 }
                 if (line.Contains("rainsensor=") && di.rain != 1)
                 {
@@ -210,6 +262,8 @@ namespace ASCOM.HomeMade
                 if (line.Contains("light=")) di.light = ConvertToDouble(line.Replace("light=", ""));
                 if (line.Contains("hum=")) di.humidity = ConvertToDouble(line.Replace("hum=", ""));
                 if (line.Contains("dewp=")) di.dew = ConvertToDouble(line.Replace("dewp=", ""));
+                if (line.Contains("pressure=")) di.pressure = ConvertToDouble(line.Replace("pressure=", ""));
+                if (line.Contains("winddir=")) di.winddir = ConvertToDouble(line.Replace("winddir=", ""));
                 if (line.Contains("safe=")) di.safe = (ConvertToDouble(line.Replace("safe=", ""))==1.0);
             }
 

@@ -110,6 +110,11 @@ class DeviceSafetyMonitor
                     safe = false;
                     error += "Temperature too low\n";
                 }
+                if (data.LastOrDefault().humidity > maxHumid)
+                {
+                    safe = false;
+                    error += "Humidity too high\n";
+                }
                 if (limitTempHumid && ((data.LastOrDefault().temperature - tempOffset) < ((-0.0000188264 * Math.Pow(data.LastOrDefault().humidity, 3)) + (0.00317 * Math.Pow(data.LastOrDefault().humidity, 2)) + (0.038835 * data.LastOrDefault().humidity) - 16.7018)))
                 {
                     safe = false;
@@ -149,7 +154,16 @@ class DeviceSafetyMonitor
     
     private List<DataItem> GetData()
     {
-        return RemoteData.GetData(soloServer, internetServer, UPSURL, UPSSearch);
+        List<DataItem> data = RemoteData.GetData(soloServer, internetServer, UPSURL, UPSSearch);
+
+        DataItem dataItem = null;
+        foreach(DataItem item in data)
+        {
+            if (dataItem == null) dataItem = item;
+            else dataItem = dataItem + item;
+        }
+        dataItem = dataItem / data.Count;
+        return new List<DataItem>() { dataItem };
     }
 
     //ENDOFINSERTEDFILE
