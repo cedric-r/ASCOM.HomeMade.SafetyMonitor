@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using ASCOM.HomeMade;
 using Newtonsoft.Json;
 
-class DeviceObservingConditions
+class DeviceObservingConditions : Device
 {
     //private static TraceLogger tl = new TraceLogger();
     private bool _trace = false;
@@ -26,7 +26,6 @@ class DeviceObservingConditions
             Logger.trace = value; _trace = value;
         }
     }
-    public string Server { get; set; }
     private List<DataItem> _Data = new List<DataItem>();
     private DateTime _LastUpdate = DateTime.MinValue;
 
@@ -347,7 +346,7 @@ class DeviceObservingConditions
 
     private List<DataItem> GetData()
     {
-        List<DataItem> data = RemoteData.GetDataAverage(Server);
+        List<DataItem> data = RemoteData.GetDataAverage(soloServer, internetServer, UPSURL, UPSSearch);
         return data;
     }
     #endregion

@@ -180,7 +180,11 @@ namespace ASCOM.HomeMade
             _safetymonitorcontroller.maxHumid = maxHumid;
 
             _observingconditionscontroller = new DeviceObservingConditions();
-            _observingconditionscontroller.Server = soloServer;
+            _observingconditionscontroller.internetServer = comServer;
+            _observingconditionscontroller.soloServer = soloServer;
+            _observingconditionscontroller.UPS = UPS;
+            _observingconditionscontroller.UPSURL = UPSURL;
+            _observingconditionscontroller.UPSSearch = UPSSearch;
             _observingconditionscontroller.trace = trace;
 
             RemoteData.NBAVERAGE = avg;
@@ -478,8 +482,12 @@ namespace ASCOM.HomeMade
                     _safetymonitorcontroller.maxGust = maxGust;
                     _safetymonitorcontroller.rainSensor = rainSensor;
                     _safetymonitorcontroller.maxHumid = maxHumid;
-                    
-                    _observingconditionscontroller.Server = soloServer;
+
+                    _observingconditionscontroller.internetServer = comServer;
+                    _observingconditionscontroller.soloServer = soloServer;
+                    _observingconditionscontroller.UPS = UPS;
+                    _observingconditionscontroller.UPSURL = UPSURL;
+                    _observingconditionscontroller.UPSSearch = UPSSearch;
                     _observingconditionscontroller.trace = trace;
 
                     RemoteData.NBAVERAGE = avg;

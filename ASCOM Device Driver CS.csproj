@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Device.cs" />
     <Compile Include="DeviceObservingConditions.cs" />
     <Compile Include="DeviceSafetyMonitor.cs" />
     <Compile Include="Driver.cs" />

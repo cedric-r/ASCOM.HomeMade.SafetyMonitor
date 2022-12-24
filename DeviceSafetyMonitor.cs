@@ -10,10 +10,8 @@ using ASCOM;
 using ASCOM.HomeMade;
 using ASCOM.Utilities;
 
-class DeviceSafetyMonitor
+class DeviceSafetyMonitor : Device
 {
-    public string internetServer { get; set; }
-    public string soloServer { get; set; }
     private int internetFail = 0;
     private bool _trace = false;
     public bool trace
@@ -34,11 +32,6 @@ class DeviceSafetyMonitor
     public bool limitLuminosity { get; set; }
     public double maxWind { get; set; }
     public double maxGust { get; set; }
-    public bool UPS { get; set; }
-    public bool Internet { get; set; }
-    public string UPSURL { get; set; }
-    public string UPSSearch { get; set; }
-    public int rainSensor { get; set; }
 
     #region ISafetyMonitor Implementation
     public bool IsSafe
@@ -51,7 +44,7 @@ class DeviceSafetyMonitor
                 Logger.LogMessage("ISafetyMonitor - Get");
                 string error = "";
                 List<DataItem> data = GetData();
-                if (data.LastOrDefault().rain == 1)
+                if (data.LastOrDefault().rain > 0.0)
                 {
                     safe = false;
                     error += "Rain detected\n";

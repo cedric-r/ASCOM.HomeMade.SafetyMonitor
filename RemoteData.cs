@@ -248,15 +248,15 @@ namespace ASCOM.HomeMade
             {
                 if (line.Contains("clouds=")) di.cloud = ConvertToDouble(line.Replace("clouds=", ""));
                 if (line.Contains("temp=")) di.temperature = ConvertToDouble(line.Replace("temp=", ""));
+                di.rain = 0.0;
                 if (line.Contains("rain="))
                 {
                     di.rain = ConvertToDouble(line.Replace("rain=", ""));
                 }
-                if (line.Contains("rainsensor=") && di.rain != 1)
+                if (line.Contains("rainsensor=") && di.rain == 0.0)
                 {
                     double r = ConvertToDouble(line.Replace("rainsensor=", ""));
                     if (r <= RainSensor) di.rain = 1;
-                    else di.rain = 0;
                 }
                 if (line.Contains("wind=")) di.wind = ConvertToDouble(line.Replace("wind=", "")) / 3.6;
                 if (line.Contains("gust=")) di.gust = ConvertToDouble(line.Replace("gust=", "")) / 3.6;
