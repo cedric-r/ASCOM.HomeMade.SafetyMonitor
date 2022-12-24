@@ -5,13 +5,13 @@
 [Setup]
 AppID={{07E9F8D9-E85C-4B2B-BC84-6F2EF6B3E781}
 AppName=ASCOM HomeMade SafetyMonitor Driver
-AppVerName=ASCOM HomeMade SafetyMonitor Driver 0.14.8
-AppVersion=0.14.8
+AppVerName=ASCOM HomeMade SafetyMonitor Driver 0.15.1
+AppVersion=0.15.1
 AppPublisher=Cedric Raguenaud <cedric@raguenaud.earth>
 AppPublisherURL=mailto:cedric@raguenaud.earth
 AppSupportURL=http://tech.groups.yahoo.com/group/ASCOM-Talk/
 AppUpdatesURL=http://ascom-standards.org/
-VersionInfoVersion=0.14.8
+VersionInfoVersion=0.15.1
 MinVersion=0,6.0
 DefaultDirName="{cf}\ASCOM\SafetyMonitor"
 DisableDirPage=yes

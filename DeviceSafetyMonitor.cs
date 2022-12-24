@@ -154,16 +154,9 @@ class DeviceSafetyMonitor
     
     private List<DataItem> GetData()
     {
-        List<DataItem> data = RemoteData.GetData(soloServer, internetServer, UPSURL, UPSSearch);
+        List<DataItem> data = RemoteData.GetDataAverage(soloServer, internetServer, UPSURL, UPSSearch);
 
-        DataItem dataItem = null;
-        foreach(DataItem item in data)
-        {
-            if (dataItem == null) dataItem = item;
-            else dataItem = dataItem + item;
-        }
-        dataItem = dataItem / data.Count;
-        return new List<DataItem>() { dataItem };
+        return data;
     }
 
     //ENDOFINSERTEDFILE

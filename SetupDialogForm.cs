@@ -58,6 +58,7 @@ namespace ASCOM.HomeMade
                 SafetyMonitor.maxGust = Convert.ToDouble(textBoxMaxGusts.Text);
                 SafetyMonitor.rainSensor = Convert.ToInt32(textBoxRainSensor.Text);
                 SafetyMonitor.maxHumid = Convert.ToDouble(textBoxMaxHumidity.Text);
+                SafetyMonitor.avg = Convert.ToInt32(textBoxAvg.Text);
             }
             catch (Exception ex)
             {
@@ -107,6 +108,7 @@ namespace ASCOM.HomeMade
                 textBoxMaxWind.Text = SafetyMonitor.maxWind.ToString();
                 textBoxMaxGusts.Text = SafetyMonitor.maxGust.ToString();
                 textBoxRainSensor.Text = SafetyMonitor.rainSensor.ToString();
+                textBoxAvg.Text = SafetyMonitor.avg.ToString();
 
                 // set the list of com ports to those that are currently available
                 if (String.IsNullOrEmpty(SafetyMonitor.comServer))

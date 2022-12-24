@@ -347,16 +347,8 @@ class DeviceObservingConditions
 
     private List<DataItem> GetData()
     {
-        List<DataItem> data = RemoteData.GetData(Server);
-
-        DataItem dataItem = null;
-        foreach (DataItem item in data)
-        {
-            if (dataItem == null) dataItem = item;
-            else dataItem = dataItem + item;
-        }
-        dataItem = dataItem / data.Count;
-        return new List<DataItem>() { dataItem };
+        List<DataItem> data = RemoteData.GetDataAverage(Server);
+        return data;
     }
     #endregion
 

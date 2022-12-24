@@ -61,6 +61,8 @@ namespace ASCOM.HomeMade
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxMaxHumidity = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.textBoxAvg = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picASCOM)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,7 +125,7 @@ namespace ASCOM.HomeMade
             // chkTrace
             // 
             this.chkTrace.AutoSize = true;
-            this.chkTrace.Location = new System.Drawing.Point(109, 483);
+            this.chkTrace.Location = new System.Drawing.Point(109, 515);
             this.chkTrace.Name = "chkTrace";
             this.chkTrace.Size = new System.Drawing.Size(69, 17);
             this.chkTrace.TabIndex = 9;
@@ -231,7 +233,7 @@ namespace ASCOM.HomeMade
             // checkBoxLuminosity
             // 
             this.checkBoxLuminosity.AutoSize = true;
-            this.checkBoxLuminosity.Location = new System.Drawing.Point(109, 425);
+            this.checkBoxLuminosity.Location = new System.Drawing.Point(109, 457);
             this.checkBoxLuminosity.Name = "checkBoxLuminosity";
             this.checkBoxLuminosity.Size = new System.Drawing.Size(95, 17);
             this.checkBoxLuminosity.TabIndex = 19;
@@ -273,7 +275,7 @@ namespace ASCOM.HomeMade
             // checkBoxUPS
             // 
             this.checkBoxUPS.AutoSize = true;
-            this.checkBoxUPS.Location = new System.Drawing.Point(109, 402);
+            this.checkBoxUPS.Location = new System.Drawing.Point(109, 434);
             this.checkBoxUPS.Name = "checkBoxUPS";
             this.checkBoxUPS.Size = new System.Drawing.Size(48, 17);
             this.checkBoxUPS.TabIndex = 24;
@@ -283,7 +285,7 @@ namespace ASCOM.HomeMade
             // checkBoxInternet
             // 
             this.checkBoxInternet.AutoSize = true;
-            this.checkBoxInternet.Location = new System.Drawing.Point(109, 448);
+            this.checkBoxInternet.Location = new System.Drawing.Point(109, 480);
             this.checkBoxInternet.Name = "checkBoxInternet";
             this.checkBoxInternet.Size = new System.Drawing.Size(62, 17);
             this.checkBoxInternet.TabIndex = 25;
@@ -354,11 +356,29 @@ namespace ASCOM.HomeMade
             this.label13.TabIndex = 33;
             this.label13.Text = "Max humidity";
             // 
+            // textBoxAvg
+            // 
+            this.textBoxAvg.Location = new System.Drawing.Point(109, 402);
+            this.textBoxAvg.Name = "textBoxAvg";
+            this.textBoxAvg.Size = new System.Drawing.Size(43, 20);
+            this.textBoxAvg.TabIndex = 34;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 405);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "Avg (minutes)";
+            // 
             // SetupDialogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 540);
+            this.Controls.Add(this.textBoxAvg);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.textBoxMaxHumidity);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.textBoxRainSensor);
@@ -441,5 +461,7 @@ namespace ASCOM.HomeMade
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox textBoxMaxHumidity;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxAvg;
+        private System.Windows.Forms.Label label14;
     }
 }

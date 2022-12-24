@@ -97,8 +97,6 @@ namespace ASCOM.HomeMade
                 if ((DateTime.Now - _LastUpdate).TotalSeconds > UPDATEFREQUENCY || _Data.Count == 0)
                 {
                     DataItem di = new DataItem();
-                    var epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-                    di.time = (int)epoch;
 
                     Logger.LogMessage("Loading SOLO data");
                     HttpClient _Client = new HttpClient();
@@ -242,6 +240,9 @@ namespace ASCOM.HomeMade
         private static DataItem Decoder(string data)
         {
             DataItem di = new DataItem();
+            var epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            di.time = (int)Math.Round(epoch);
+
             List<string> diList = data.Split('\n').ToList();
             foreach (string line in diList)
             {
@@ -278,7 +279,19 @@ namespace ASCOM.HomeMade
             return Double.Parse(num);
         }
 
+        public static List<DataItem> GetDataAverage(string soloServer, string internetServer = "", string UPSURL = "", string UPSSearch = "", int rainSensor = 800)
+        {
+            List<DataItem> data = GetData(soloServer, internetServer, UPSURL, UPSSearch);
 
+            DataItem dataItem = null;
+            foreach (DataItem item in data)
+            {
+                if (dataItem == null) dataItem = item;
+                else dataItem = dataItem + item;
+            }
+            dataItem = dataItem / data.Count;
+            return new List<DataItem>() { dataItem };
+        }
     }
 
 }
